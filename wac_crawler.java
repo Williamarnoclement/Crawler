@@ -18,7 +18,8 @@ class wac_crawler
 
     if ( crawler_deep == 0 ) return 1;
 
-    int i;
+    int i,j;
+
 
 
 
@@ -45,7 +46,23 @@ class wac_crawler
 
       String my = returned_url.get(i);
 
-      power(crawler_deep-1, my ) ;
+
+      if (my.contains("http://") || my.contains("https://")) {
+
+        for (j = 0; j< i ; j++) {
+          //si on a deja visite la page
+          if (my == returned_url.get(j)) {
+            break;
+          } else {
+            power(crawler_deep-1, my ) ;
+            System.out.println("crawl deep: " + crawler_deep);
+          }
+
+        }
+
+
+
+      }
 
 
 
@@ -70,10 +87,6 @@ class wac_crawler
     String content = null;
 
     String title = null;
-
-
-
-
 
     ArrayList<String> ar = new ArrayList<String>();
 
@@ -126,6 +139,7 @@ class wac_crawler
 
 
     System.out.println("Titre page : " + title);
+    System.out.println("Url page : " + my_url);
 
     System.out.println("+--- Liste des liens de la page ---+");
 
@@ -153,9 +167,14 @@ class wac_crawler
 
 
 
+    if (args.length == 0) {
 
+      System.out.println("OU EST L' URL ?");
+      System.exit(1);
 
-    System.out.println( power( 2, args[0]));
+    }
+
+    System.out.println( power( 5, args[0]));
 
 
 
