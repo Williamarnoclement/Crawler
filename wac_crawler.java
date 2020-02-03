@@ -9,7 +9,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-
 class wac_crawler
 
 {
@@ -18,36 +17,29 @@ class wac_crawler
 
     if ( crawler_deep == 0 ) return 1;
 
+
+
     int i,j;
-
-
-
 
     ArrayList<String> returned_url;
 
-
-
     returned_url = crawling(wac_url);
-
 
 
     System.out.println(returned_url);
 
 
-
-
-
-
-
-
     for (i = 0; i < returned_url.size() ; i++) {
-
 
 
       String my = returned_url.get(i);
 
 
       if (my.contains("http://") || my.contains("https://")) {
+
+
+        wac_robot_txt robot_checker = new wac_robot_txt();
+        robot_checker.setUrl(my);
 
         for (j = 0; j< i ; j++) {
           //si on a deja visite la page
@@ -108,7 +100,7 @@ class wac_crawler
 
     }catch ( Exception ex ) {
 
-      System.out.println("lol");
+      System.out.println("Impossible de parser " + my_url);
 
     }
 
@@ -173,6 +165,7 @@ class wac_crawler
       System.exit(1);
 
     }
+
 
     System.out.println( power( 5, args[0]));
 
