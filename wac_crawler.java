@@ -46,13 +46,39 @@ class wac_crawler
           if (my == returned_url.get(j)) {
             break;
           } else {
-            power(crawler_deep-1, my ) ;
-            System.out.println("crawl deep: " + crawler_deep);
+
+
+            //si c'est bien un fichier HTML
+            char moinsun = my.charAt(my.length() - 1);
+            char moinsdeux = my.charAt(my.length() - 2);
+            char moinstrois = my.charAt(my.length() - 3);
+            char moinsquatre = my.charAt(my.length() - 4);
+            char moinscinq = my.charAt(my.length() - 5);
+
+            if (moinsun == 'l' && moinsdeux == 'm' && moinstrois == 't' && moinsquatre=='h' && moinscinq == '.') {
+              power(crawler_deep-1, my ) ;
+              System.out.println("crawl deep: " + crawler_deep);
+            } else if (moinsun == 'm' && moinsdeux == 't' && moinstrois == 'h' && moinsquatre=='.' ) {
+              power(crawler_deep-1, my ) ;
+              System.out.println("crawl deep: " + crawler_deep);
+            } else if (moinsun == 'p' && moinsdeux == 'h' && moinstrois == 'p' && moinsquatre=='.' ) {
+              power(crawler_deep-1, my ) ;
+              System.out.println("crawl deep: " + crawler_deep);
+            } else if (moinsun == 's' && moinsdeux == 's' && moinstrois == 'c' && moinsquatre=='.' ) {
+              //ne fait rien si c'est un .css
+            } else if (moinsun == 's' && moinsdeux == 'j' && moinstrois == '.') {
+              //ne fait rien si c'est un .js
+            } else if (my == "#" || my.contains("linkedin.com")) {
+              //do nothing
+
+            } else {
+              power(crawler_deep-1, my );
+              System.out.println("crawl deep: " + crawler_deep);
+            }
+
           }
 
         }
-
-
 
       }
 

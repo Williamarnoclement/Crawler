@@ -16,7 +16,7 @@ public class wac_robot_txt  {
 
 	public  boolean wac_robot_txt() {
 
-
+		System.out.println("test");
 
 		try {
 			URI uri = new URI(getUrl());
