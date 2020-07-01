@@ -13,7 +13,9 @@ class wac_crawler
 
 {
 
-  public static int power( int crawler_deep, String wac_url ) {
+  private  ArrayList<String> visited_url = new ArrayList<String>();
+
+  public  int power( int crawler_deep, String wac_url ) {
 
     if ( crawler_deep == 0 ) return 1;
 
@@ -41,44 +43,44 @@ class wac_crawler
         wac_robot_txt robot_checker = new wac_robot_txt();
         robot_checker.setUrl(my);
 
-        for (j = 0; j< i ; j++) {
-          //si on a deja visite la page
-          if (my == returned_url.get(j)) {
-            break;
+
+        //si on a deja visite la page
+        if (Arrays.asList(this.visited_url).contains(my)) {
+          System.out.println("page déjà visité !");
+          break;
+        } else {
+          visited_url.add(my);
+          //si c'est bien un fichier HTML
+          char moinsun = my.charAt(my.length() - 1);
+          char moinsdeux = my.charAt(my.length() - 2);
+          char moinstrois = my.charAt(my.length() - 3);
+          char moinsquatre = my.charAt(my.length() - 4);
+          char moinscinq = my.charAt(my.length() - 5);
+
+          if (moinsun == 'l' && moinsdeux == 'm' && moinstrois == 't' && moinsquatre=='h' && moinscinq == '.') {
+            power(crawler_deep-1, my ) ;
+            System.out.println("crawl deep: " + crawler_deep);
+          } else if (moinsun == 'm' && moinsdeux == 't' && moinstrois == 'h' && moinsquatre=='.' ) {
+            power(crawler_deep-1, my ) ;
+            System.out.println("crawl deep: " + crawler_deep);
+          } else if (moinsun == 'p' && moinsdeux == 'h' && moinstrois == 'p' && moinsquatre=='.' ) {
+            power(crawler_deep-1, my ) ;
+            System.out.println("crawl deep: " + crawler_deep);
+          } else if (moinsun == 's' && moinsdeux == 's' && moinstrois == 'c' && moinsquatre=='.' ) {
+            //ne fait rien si c'est un .css
+          } else if (moinsun == 's' && moinsdeux == 'j' && moinstrois == '.') {
+            //ne fait rien si c'est un .js
+          } else if (my == "#" || my.contains("linkedin.com")) {
+            //do nothing
+
           } else {
-
-
-            //si c'est bien un fichier HTML
-            char moinsun = my.charAt(my.length() - 1);
-            char moinsdeux = my.charAt(my.length() - 2);
-            char moinstrois = my.charAt(my.length() - 3);
-            char moinsquatre = my.charAt(my.length() - 4);
-            char moinscinq = my.charAt(my.length() - 5);
-
-            if (moinsun == 'l' && moinsdeux == 'm' && moinstrois == 't' && moinsquatre=='h' && moinscinq == '.') {
-              power(crawler_deep-1, my ) ;
-              System.out.println("crawl deep: " + crawler_deep);
-            } else if (moinsun == 'm' && moinsdeux == 't' && moinstrois == 'h' && moinsquatre=='.' ) {
-              power(crawler_deep-1, my ) ;
-              System.out.println("crawl deep: " + crawler_deep);
-            } else if (moinsun == 'p' && moinsdeux == 'h' && moinstrois == 'p' && moinsquatre=='.' ) {
-              power(crawler_deep-1, my ) ;
-              System.out.println("crawl deep: " + crawler_deep);
-            } else if (moinsun == 's' && moinsdeux == 's' && moinstrois == 'c' && moinsquatre=='.' ) {
-              //ne fait rien si c'est un .css
-            } else if (moinsun == 's' && moinsdeux == 'j' && moinstrois == '.') {
-              //ne fait rien si c'est un .js
-            } else if (my == "#" || my.contains("linkedin.com")) {
-              //do nothing
-
-            } else {
-              power(crawler_deep-1, my );
-              System.out.println("crawl deep: " + crawler_deep);
-            }
-
+            power(crawler_deep-1, my );
+            System.out.println("crawl deep: " + crawler_deep);
           }
 
         }
+
+
 
       }
 
@@ -98,7 +100,7 @@ class wac_crawler
 
 
 
-  public static ArrayList<String> crawling(String my_url){
+  public  ArrayList<String> crawling(String my_url){
 
 
 
@@ -127,6 +129,7 @@ class wac_crawler
     }catch ( Exception ex ) {
 
       System.out.println("Impossible de parser " + my_url);
+      //ar.add("nope");
 
     }
 
@@ -180,7 +183,7 @@ class wac_crawler
   }
 
 
-
+/**
   public static void main(String[] args) {
 
 
@@ -193,9 +196,17 @@ class wac_crawler
     }
 
 
-    System.out.println( power( 5, args[0]));
+    //System.out.println( power( 5, args[0]));
+    initialisation(args[0]);
 
 
+
+  }
+  **/
+
+  public void initialisation(String letsgo){
+
+    System.out.println( power( 5, letsgo));
 
   }
 
