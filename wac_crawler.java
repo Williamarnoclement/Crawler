@@ -45,11 +45,11 @@ class wac_crawler
 
 
         //si on a deja visite la page
-        if (Arrays.asList(this.visited_url).contains(my)) {
-          System.out.println("page déjà visité !");
+        if (this.visited_url.contains(my)) {
+          System.out.println("page déjà visité !-----------------------------------------------+");
           break;
-        } else {
-          visited_url.add(my);
+        } else if (!this.visited_url.contains(my)) {
+
           //si c'est bien un fichier HTML
           char moinsun = my.charAt(my.length() - 1);
           char moinsdeux = my.charAt(my.length() - 2);
@@ -58,12 +58,15 @@ class wac_crawler
           char moinscinq = my.charAt(my.length() - 5);
 
           if (moinsun == 'l' && moinsdeux == 'm' && moinstrois == 't' && moinsquatre=='h' && moinscinq == '.') {
+            visited_url.add(my);
             power(crawler_deep-1, my ) ;
             System.out.println("crawl deep: " + crawler_deep);
           } else if (moinsun == 'm' && moinsdeux == 't' && moinstrois == 'h' && moinsquatre=='.' ) {
+            visited_url.add(my);
             power(crawler_deep-1, my ) ;
             System.out.println("crawl deep: " + crawler_deep);
           } else if (moinsun == 'p' && moinsdeux == 'h' && moinstrois == 'p' && moinsquatre=='.' ) {
+            visited_url.add(my);
             power(crawler_deep-1, my ) ;
             System.out.println("crawl deep: " + crawler_deep);
           } else if (moinsun == 's' && moinsdeux == 's' && moinstrois == 'c' && moinsquatre=='.' ) {
@@ -74,6 +77,7 @@ class wac_crawler
             //do nothing
 
           } else {
+            visited_url.add(my);
             power(crawler_deep-1, my );
             System.out.println("crawl deep: " + crawler_deep);
           }
@@ -183,30 +187,13 @@ class wac_crawler
   }
 
 
-/**
-  public static void main(String[] args) {
-
-
-
-    if (args.length == 0) {
-
-      System.out.println("OU EST L' URL ?");
-      System.exit(1);
-
-    }
-
-
-    //System.out.println( power( 5, args[0]));
-    initialisation(args[0]);
-
-
-
-  }
-  **/
 
   public void initialisation(String letsgo){
 
+    visited_url.add(letsgo);
     System.out.println( power( 5, letsgo));
+    System.out.println("END ..");
+    System.out.println(Arrays.toString(this.visited_url.toArray()));
 
   }
 
