@@ -15,6 +15,8 @@ class wac_crawler
 
   private  ArrayList<String> visited_url = new ArrayList<String>();
 
+  private Connect pingr;
+
   public  int power( int crawler_deep, String wac_url ) {
 
     if ( crawler_deep == 0 ) return 1;
@@ -46,7 +48,9 @@ class wac_crawler
 
         //si on a deja visite la page
         if (this.visited_url.contains(my)) {
-          System.out.println("page déjà visité !-----------------------------------------------+");
+          System.out.println("page déjà visité !-----------------------------------------------+" + my);
+          int iniBNL = this.pingr.getIniBLN(my);
+          this.pingr.setNEWBLN(my, iniBNL + 1);
           break;
         } else if (!this.visited_url.contains(my)) {
 
@@ -166,6 +170,8 @@ class wac_crawler
     System.out.println("Titre page : " + title);
     System.out.println("Url page : " + my_url);
 
+    this.pingr.newPage(my_url, "contenu",title );
+
     System.out.println("+--- Liste des liens de la page ---+");
 
 
@@ -191,6 +197,10 @@ class wac_crawler
   public void initialisation(String letsgo){
 
     visited_url.add(letsgo);
+
+    this.pingr = new Connect();
+    this.pingr.initialisation();
+
     System.out.println( power( 5, letsgo));
     System.out.println("END ..");
     System.out.println(Arrays.toString(this.visited_url.toArray()));

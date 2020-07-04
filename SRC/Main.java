@@ -15,9 +15,6 @@ class Main
 
   public static void main(String[] args) {
 
-    Connect pingr = new Connect();
-    pingr.initialisation();
-
     wac_crawler wac = new wac_crawler();
 
     if (args.length == 0) {
