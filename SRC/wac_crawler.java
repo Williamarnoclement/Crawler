@@ -49,8 +49,9 @@ class wac_crawler
         //si on a deja visite la page
         if (this.visited_url.contains(my)) {
           System.out.println("page déjà visité !-----------------------------------------------+" + my);
-          int iniBNL = this.pingr.getIniBLN(my);
-          this.pingr.setNEWBLN(my, iniBNL + 1);
+          /**int iniBLN = this.pingr.getIniBLN(my);
+          System.out.println("bln =" + iniBLN);
+          this.pingr.setNEWBLN(my, iniBLN + 1);**/
           break;
         } else if (!this.visited_url.contains(my)) {
 

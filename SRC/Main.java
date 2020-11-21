@@ -8,6 +8,8 @@ import java.lang.Object;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//javac -classpath "./mysql-connector-java-8.0.20.jar;." *.java
+//java -classpath "./mysql-connector-java-8.0.20.jar;." Main  <url>
 
 class Main
 

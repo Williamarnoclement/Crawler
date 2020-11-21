@@ -55,6 +55,7 @@ public class Connect{
       if ( newURL != null && newContent != null && newTitle != null ) {
         int insertingPage = statement.executeUpdate( "INSERT INTO page (url, contenu, titre) "
         + "VALUES ('" + newURL + "', '" + newContent + "', '" + newTitle + "');" );
+        setNEWBLN(newURL, 0);
       }
       //
 
@@ -63,6 +64,8 @@ public class Connect{
     } catch (SQLException e){
 
       System.out.println("nooooope!");
+
+      setNEWBLN(newURL, getIniBLN(newURL) + 1);
       System.out.println("SQLException: " + e.getMessage());
       System.out.println("SQLSate: " + e.getSQLState());
       System.out.println("Vendor Error: " + e.getErrorCode());
@@ -86,7 +89,7 @@ public class Connect{
 
 
         /* Récupération des données du résultat de la requête de lecture */
-        
+
         int iniBLN = resultat.getInt( 1 );
         System.out.println("BLN retourné: " + iniBLN);
 
