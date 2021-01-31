@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 02 juil. 2020 à 16:12
+-- Généré le :  Dim 31 jan. 2021 à 19:49
 -- Version du serveur :  5.7.23
--- Version de PHP :  7.2.10
+-- Version de PHP :  7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `url` varchar(255) NOT NULL,
   `contenu` text NOT NULL,
   `titre` varchar(255) NOT NULL,
+  `bln` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `titre` (`url`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

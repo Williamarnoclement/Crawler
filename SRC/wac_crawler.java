@@ -128,7 +128,7 @@ class wac_crawler
       connection =  new URL(my_url).openConnection();
 
       Scanner scanner = new Scanner(connection.getInputStream());
-
+      System.out.println("Connexion ouverte sur le site " + my_url);
       scanner.useDelimiter("\\Z");
 
       content = scanner.next();
@@ -150,19 +150,27 @@ class wac_crawler
 
     Pattern pattern_links = Pattern.compile("href=\"(.*?)\"", Pattern.DOTALL);
 
+    Matcher matcher_title;
+    Matcher matcher_links = null;
+    Boolean isMatcherBugging = false;
+
+    try{
+      matcher_title = pattern_title.matcher(content);
+
+      while (matcher_title.find()) {
+
+        title = matcher_title.group(1);
+
+      }
 
 
-    Matcher matcher_title = pattern_title.matcher(content);
 
-    while (matcher_title.find()) {
-
-      title = matcher_title.group(1);
-
+      matcher_links = pattern_links.matcher(content);
+    } catch ( Exception ex) {
+      System.out.println("Matcher is bugging !");
+      isMatcherBugging = true;
+      title = my_url;
     }
-
-
-
-    Matcher matcher_links = pattern_links.matcher(content);
 
 
 
@@ -177,14 +185,16 @@ class wac_crawler
 
 
 
-    while (matcher_links.find()) {
+    if (isMatcherBugging == false) {
+      while (matcher_links.find()) {
 
 
 
-      ar.add(matcher_links.group(1));
+        ar.add(matcher_links.group(1));
 
-      //matcher_links.group(1);
+        //matcher_links.group(1);
 
+      }
     }
 
 
