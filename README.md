@@ -10,7 +10,9 @@ A recursive function is dedicated to crawl the web. For each new web page founde
 
 Here is a short diagram to understand the crawler (written in french).
 
-![alt text](https://raw.githubusercontent.com/Williamarnoclement/Crawler/master/schemas/wac.png)
+![how it works](https://raw.githubusercontent.com/Williamarnoclement/Crawler/master/schemas/wac.png)
 
 ## About me 
 My name is William-Arno and I love make things ! Discover my code on [Github profile](https://github.com/Williamarnoclement) and on my [website](https://www.griffure.com).
+
+I did an article (in french) about the process of making a search engine available on [my blog](https://blog.griffure.com/comment-jai-fait-mon-moteur-de-recherche-web/).
