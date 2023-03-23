@@ -15,4 +15,4 @@ Here is a short diagram to understand the crawler (written in french).
 ## About me 
 My name is William-Arno and I love make things ! Discover my code on [Github profile](https://github.com/Williamarnoclement) and on my [website](https://www.griffure.com).
 
-I did an article (in french) about the process of making a search engine available on [my blog](https://blog.griffure.com/comment-jai-fait-mon-moteur-de-recherche-web/).
+I did an article (in french) about the process of making a search engine available on [my blog](https://www.griffure.com/comment-jai-fait-mon-moteur-de-recherche-web/).
