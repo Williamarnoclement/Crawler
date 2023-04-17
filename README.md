@@ -3,7 +3,7 @@
 
 ## The project
 This repository is dedicated to my from scratch web search engine with its index on a MySQL database, a crawler written in JAVA and a ranker written in PHP (not included in this git version).
-A demo version is available on [Xalt.fr](https://xalt.fr/), with ~4 700 pages currently indexed.
+A demo version indexed ~4 700 pages.
 
 ## How it works
 A recursive function is dedicated to crawl the web. For each new web page founded, several classes are instanciated. There are multiples checks to do before registering the new page into the index, like read the robot.txt file, count how many pages redirect on the current page, and much more.
